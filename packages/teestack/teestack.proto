@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+import "teestack_dep.proto";
+
+service KeyManagerService {
+  rpc GetEnclaveKey (GetEnclaveKeyRequest) returns (EnclaveKeyResponse);
+  rpc RevokeKey (RevokeKeyRequest) returns (RevokeResponse);
+  rpc GetRevocationList (RevocationListRequest) returns (RevocationListResponse);
+  rpc BindtoEnclaveKey (BindtoEnclaveKeyReqest) returns (EnclaveKey);
+}
+
+message RevokeResponse {
+  string message = 1;
+  Status status = 2;
+}
+
+message EnclaveKeyResponse {
+ string message = 1;
+  Status status = 2;
+}
+
+message RevocationListResponse {
+  string message = 1;
+  Status status = 3;
+  map<string, Enclave> enclaves = 4;
+}
+message RevokeKeyRequest {
+  string identity = 1;
+}
+
+message RevocationListRequest {
+  string filter = 1;
+}
+
+
+message GetEnclaveKeyRequest {
+  string eoa_address = 1;
+}
+
+message BindtoEnclaveKeyReqest {
+  string bytes = 1;
+}
+
+
+enum Status {
+  STATUS_UNSPECIFIED = 0;
+  STATUS_OK = 1;
+  STATUS_ERROR = 2;
+}
+
+message EnclaveKey {
+  string cipher = 1;
+  string public = 2;
+  string private = 3;
+  int32 expiry = 4;
+}
+message Enclave {
+ string tcb = 1;
+  bool active = 2;
+  Address address = 3;
+}

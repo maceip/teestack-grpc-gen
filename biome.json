@@ -1,0 +1,33 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.1.2/schema.json",
+  "organizeImports": {
+    "enabled": false
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true
+    }
+  },
+  "formatter": {
+    "indentStyle": "space",
+    "lineWidth": 120
+  },
+  "files": {
+    "ignore": [
+      "**/pb/**",
+      ".vscode",
+      "**/snapshots/**",
+      "mockServiceWorker.js",
+      "node_modules",
+      "packages/teestack/src/mocks/gen",
+      "packages/teestack/dist/**"
+    ]
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "semicolons": "asNeeded"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+message Key {
+string id = 1;
+}
+message Address {
+string ens = 1;
+string dns = 2;
+string chain = 3;
+}
+message x509 {
+  string ens = 1;
+  string rootca = 2;
+}
